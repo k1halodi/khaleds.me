@@ -291,6 +291,16 @@
   .edu-card div { color: var(--muted); font-size: 14px; }
   .edu-card b { color: var(--ink); font-weight: 600; }
 
+  /* ---------- SKILLS ---------- */
+  .skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 60px; }
+  @media (max-width: 980px) { .skills { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .skills { grid-template-columns: 1fr; } }
+  .skill-card { border: 1px solid var(--line); border-radius: 20px; background: var(--panel); box-shadow: var(--shadow); padding: 32px 28px; transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+  .skill-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .skill-card .n { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--gold); }
+  .skill-card h4 { font-family: var(--serif); font-size: 20px; font-weight: 560; margin: 10px 0 16px; letter-spacing: -0.01em; }
+  .skill-card .chiprow { display: flex; flex-wrap: wrap; gap: 8px; }
+
   /* ---------- CONTACT ---------- */
   .contact { text-align: center; }
   .contact h2 { font-family: var(--serif); font-weight: 560; font-size: clamp(44px, 8vw, 100px); letter-spacing: -0.02em; line-height: 1.02; }
@@ -364,6 +374,7 @@
       <a href="#apps">Apps</a>
       <a href="#brand">Brand</a>
       <a href="#experience">Journey</a>
+      <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -504,12 +515,12 @@
     <h2 class="sec-title rv d1">Apps, designed <em>end to end</em>.</h2>
     <p class="sec-lead rv d2">Product design case studies from Behance — fintech and marketplace apps.</p>
     <div class="apps-rail rv d2" id="appsRail">
-      <div class="app-card"><img class="lbimg pos-top" data-group="apps" src="assets/img/app-02.jpg" alt="Financial app — cover" loading="lazy" /><span class="cap">Financial App · Cover</span></div>
-      <div class="app-card"><img class="lbimg pos-top" data-group="apps" src="assets/img/app-03.jpg" alt="Financial app — screens" loading="lazy" /><span class="cap">Financial App · Screens</span></div>
-      <div class="app-card"><img class="lbimg pos-bottom" data-group="apps" src="assets/img/app-03.jpg" alt="Financial app — more screens" loading="lazy" /><span class="cap">Financial App · Flow</span></div>
-      <div class="app-card"><img class="lbimg" data-group="apps" src="assets/img/app-04.jpg" alt="Financial app — design system" loading="lazy" /><span class="cap">Financial App · Design System</span></div>
-      <div class="app-card"><img class="lbimg" data-group="apps" src="assets/img/app-07.jpg" alt="Bright app — cover" loading="lazy" /><span class="cap">Bright App · Cover</span></div>
-      <div class="app-card"><img class="lbimg" data-group="apps" src="assets/img/app-08.jpg" alt="Bright app — screens" loading="lazy" /><span class="cap">Bright App · Screens</span></div>
+      <div class="app-card"><img class="lbimg" data-group="fin" src="assets/img/app-fin1.jpg" alt="Financial app — home &amp; product" loading="lazy" /><span class="cap">Financial App · Screens</span></div>
+      <div class="app-card"><img class="lbimg" data-group="fin" src="assets/img/app-fin2.jpg" alt="Financial app — insights &amp; transfer" loading="lazy" /><span class="cap">Financial App · Overview</span></div>
+      <div class="app-card"><img class="lbimg" data-group="bri" src="assets/img/app-bri1.jpg" alt="Bright app — onboarding &amp; register" loading="lazy" /><span class="cap">Bright App · Screens</span></div>
+      <div class="app-card"><img class="lbimg" data-group="bri" src="assets/img/app-bri2.jpg" alt="Bright app — plan &amp; verification" loading="lazy" /><span class="cap">Bright App · Onboarding</span></div>
+      <div class="app-card"><img class="lbimg" data-group="str" src="assets/img/app-str1.jpg" alt="Mobile store — home &amp; product" loading="lazy" /><span class="cap">Mobile Store · Browse</span></div>
+      <div class="app-card"><img class="lbimg" data-group="str" src="assets/img/app-str2.jpg" alt="Mobile store — detail &amp; cart" loading="lazy" /><span class="cap">Mobile Store · Cart</span></div>
     </div>
     <div class="rail-hint rv"><span class="ln"></span>Drag sideways</div>
     <div class="be-links rv">
@@ -662,6 +673,37 @@
       <div class="edu-card"><h4>Education<em>.</em></h4><div><b>Canadian International College</b><br/>Bachelor of Business Technology<br/>2020 – 2024</div></div>
       <div class="edu-card"><h4>Certifications<em>.</em></h4><div class="xp-chips" style="margin-top:4px"><span class="chip">UX/UI Nanodegree — Udacity</span><span class="chip">Python</span><span class="chip">Linux</span><span class="chip">Adobe Illustrator</span></div></div>
       <div class="edu-card"><h4>Languages<em>.</em></h4><div><b>Arabic</b> — Native<br/><b>English</b> — Proficient</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-eyebrow rv">Capabilities</div>
+    <h2 class="sec-title rv d1">A rare <em>full</em> stack.</h2>
+    <p class="sec-lead rv d2">Business, design and code — the three sides most people split across three hires. I do all of it.</p>
+    <div class="skills">
+      <div class="skill-card rv">
+        <div class="n">01</div>
+        <h4>Business &amp; Marketing</h4>
+        <div class="chiprow"><span class="chip">Media Buying</span><span class="chip">Meta · TikTok · Google Ads</span><span class="chip">Account Strategy</span><span class="chip">Sales &amp; Closing</span><span class="chip">Team Leadership</span></div>
+      </div>
+      <div class="skill-card rv d1">
+        <div class="n">02</div>
+        <h4>Product &amp; Design</h4>
+        <div class="chiprow"><span class="chip">UI/UX Design</span><span class="chip">Brand Identity</span><span class="chip">Design Systems</span><span class="chip">Wireframing</span><span class="chip">Product Thinking</span></div>
+      </div>
+      <div class="skill-card rv d2">
+        <div class="n">03</div>
+        <h4>Technical</h4>
+        <div class="chiprow"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">MongoDB</span><span class="chip">React · Redux</span><span class="chip">Electron</span><span class="chip">HTML · CSS · JS</span></div>
+      </div>
+      <div class="skill-card rv d3">
+        <div class="n">04</div>
+        <h4>Tools &amp; Languages</h4>
+        <div class="chiprow"><span class="chip">Adobe Creative Cloud</span><span class="chip">Figma</span><span class="chip">Canva</span><span class="chip">Arabic — Native</span><span class="chip">English — Proficient</span></div>
+      </div>
     </div>
   </div>
 </section>
