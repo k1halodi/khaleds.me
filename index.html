@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Khaled Sameer — Founder · Designer · Builder</title>
+<meta name="description" content="Khaled Sameer — Founder of Bright Marketing & Cafflow. Brands, products and the systems behind them." />
+<meta property="og:title" content="Khaled Sameer — Founder · Designer · Builder" />
+<meta property="og:description" content="Brands, products & the systems behind them." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://khaleds.me" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg: #FBFAF7;
+    --panel: #FFFFFF;
+    --ink: #16150f;
+    --muted: #7a7464;
+    --gold: #A2823F;
+    --gold-2: #C3A25C;
+    --line: rgba(22,21,15,0.10);
+    --line-2: rgba(22,21,15,0.18);
+    --shadow: 0 14px 44px rgba(22,21,15,0.08);
+    --shadow-lg: 0 40px 90px rgba(22,21,15,0.16);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --maxw: 1180px;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0D0C09;
+      --panel: #161410;
+      --ink: #F3F0E8;
+      --muted: #9d9583;
+      --gold: #D4B36A;
+      --gold-2: #E2C685;
+      --line: rgba(243,240,232,0.10);
+      --line-2: rgba(243,240,232,0.2);
+      --shadow: 0 14px 44px rgba(0,0,0,0.45);
+      --shadow-lg: 0 40px 90px rgba(0,0,0,0.55);
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans); background: var(--bg); color: var(--ink);
+    line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--gold); color: #fff; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 26px; }
+
+  .glow {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(46% 38% at 78% 6%, rgba(195,162,92,0.10), transparent 70%),
+      radial-gradient(40% 34% at 8% 92%, rgba(162,130,63,0.08), transparent 70%);
+  }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 66px;
+    display: flex; align-items: center;
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    backdrop-filter: blur(18px) saturate(150%); -webkit-backdrop-filter: blur(18px) saturate(150%);
+    border-bottom: 1px solid transparent; transition: border-color .4s var(--ease);
+  }
+  nav.scrolled { border-color: var(--line); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+  .brand { font-family: var(--serif); font-weight: 600; font-size: 21px; letter-spacing: -0.01em; }
+  .brand em { font-style: normal; color: var(--gold); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { font-size: 13.5px; font-weight: 500; color: var(--muted); position: relative; transition: color .25s; }
+  .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -6px; width: 0; height: 1.5px; background: var(--gold); transition: width .3s var(--ease); }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { width: 100%; }
+  @media (max-width: 860px) { .nav-links { display: none; } }
+
+  /* ---------- HERO ---------- */
+  .hero { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 1; padding-top: 90px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-size: 12.5px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted);
+  }
+  .eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+  .hero h1 {
+    margin-top: 30px; font-family: var(--serif); font-weight: 560;
+    font-size: clamp(52px, 9.6vw, 124px); letter-spacing: -0.02em; line-height: 1.02;
+  }
+  .hero h1 em { font-style: italic; font-weight: 420; color: var(--gold); }
+  .hero .sub {
+    margin-top: 30px; font-size: clamp(17px, 2.2vw, 21px); color: var(--muted); max-width: 52ch; font-weight: 400;
+  }
+  .hero .sub strong { color: var(--ink); font-weight: 600; }
+  .hero-cta { margin-top: 42px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 30px; border-radius: 999px; font-size: 15px; font-weight: 600; font-family: var(--sans);
+    cursor: pointer; border: none; will-change: transform;
+    transition: box-shadow .35s var(--ease), background .3s, color .3s, border-color .3s;
+  }
+  .btn-ink { background: var(--ink); color: var(--bg); box-shadow: var(--shadow); }
+  .btn-ink:hover { box-shadow: var(--shadow-lg); }
+  .btn-gold { background: transparent; color: var(--ink); border: 1px solid var(--line-2); }
+  .btn-gold:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-foot {
+    margin-top: 90px; padding: 22px 0; border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    color: var(--muted); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .hero-foot b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- SECTION FRAME ---------- */
+  section { padding: 130px 0; position: relative; z-index: 1; scroll-margin-top: 66px; }
+  .sec-eyebrow {
+    display: flex; align-items: center; gap: 14px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold);
+  }
+  .sec-eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+  .sec-title {
+    margin-top: 20px; font-family: var(--serif); font-weight: 560;
+    font-size: clamp(34px, 5.4vw, 62px); letter-spacing: -0.015em; line-height: 1.06;
+  }
+  .sec-title em { font-style: italic; font-weight: 420; color: var(--gold); }
+  .sec-lead { margin-top: 20px; font-size: clamp(16px, 2vw, 19px); color: var(--muted); max-width: 62ch; }
+
+  /* ---------- ABOUT ---------- */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; margin-top: 60px; }
+  @media (max-width: 820px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--panel); padding: 38px 30px; }
+  .stat .num { font-family: var(--serif); font-size: clamp(40px, 5vw, 58px); font-weight: 560; letter-spacing: -0.02em; }
+  .stat .num em { font-style: italic; color: var(--gold); font-weight: 420; }
+  .stat .lbl { margin-top: 6px; font-size: 14px; color: var(--muted); }
+
+  /* ---------- VENTURES ---------- */
+  .ventures { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 60px; }
+  @media (max-width: 900px) { .ventures { grid-template-columns: 1fr; } }
+  .vcard {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 24px;
+    padding: 42px 40px; box-shadow: var(--shadow); position: relative; overflow: hidden;
+    transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+  }
+  .vcard:hover { transform: translateY(-7px); box-shadow: var(--shadow-lg); }
+  .vcard .k { font-size: 12px; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); }
+  .vcard h3 { font-family: var(--serif); font-size: clamp(26px, 3.4vw, 36px); font-weight: 560; margin-top: 14px; letter-spacing: -0.01em; }
+  .vcard p { margin-top: 14px; color: var(--muted); font-size: 15.5px; }
+  .vcard ul { margin-top: 18px; list-style: none; display: grid; gap: 9px; }
+  .vcard li { color: var(--muted); font-size: 14.5px; padding-left: 22px; position: relative; }
+  .vcard li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+  .vtags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .vtag { font-size: 12px; font-weight: 500; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--muted); }
+
+  /* ---------- SYSTEMS / FLEET ---------- */
+  .fleet-block { margin-top: 84px; }
+  .fleet-block:first-of-type { margin-top: 60px; }
+  .fleet-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .fleet-head h3 { font-family: var(--serif); font-size: clamp(24px, 3.2vw, 34px); font-weight: 560; letter-spacing: -0.01em; }
+  .badge {
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--muted);
+  }
+  .badge.live { color: #2e9e5b; border-color: rgba(46,158,91,0.35); }
+  @media (prefers-color-scheme: dark) { .badge.live { color: #5ad48f; border-color: rgba(90,212,143,0.35); } }
+  .fleet-sub { color: var(--muted); font-size: 15.5px; max-width: 68ch; margin-top: 8px; }
+
+  .stage {
+    margin-top: 28px; border-radius: 30px; border: 1px solid var(--line);
+    background:
+      radial-gradient(90% 120% at 20% 0%, rgba(195,162,92,0.10), transparent 60%),
+      radial-gradient(90% 120% at 85% 100%, rgba(162,130,63,0.08), transparent 60%),
+      var(--panel);
+    padding: clamp(26px, 4.5vw, 60px) clamp(14px, 3vw, 44px);
+    overflow: hidden;
+  }
+  .scene { perspective: 2000px; }
+  .fleet {
+    position: relative; height: clamp(240px, 30vw, 470px);
+    transform-style: preserve-3d; will-change: transform; transition: transform .25s ease-out;
+  }
+  .lap { position: absolute; top: 50%; transform-style: preserve-3d; cursor: zoom-in; transition: transform .55s var(--ease), filter .55s var(--ease); will-change: transform; }
+  .lap .screen {
+    background: #0c0c0f; border: 1px solid #2c2c33; border-bottom: none;
+    border-radius: 14px 14px 0 0; padding: 10px 10px 13px; position: relative;
+    box-shadow: 0 44px 90px rgba(10,10,14,0.42);
+  }
+  .lap .screen::before { content: ''; position: absolute; top: 4.5px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; border-radius: 50%; background: #3a3a42; }
+  .lap .screen::after { content: ''; position: absolute; inset: 0; border-radius: 14px 14px 0 0; pointer-events: none; background: linear-gradient(115deg, rgba(255,255,255,0.10) 0%, transparent 32%); }
+  .lap .screen img { display: block; width: 100%; border-radius: 5px; }
+  .lap .deck { height: 12px; border-radius: 0 0 12px 12px; position: relative; background: linear-gradient(#e6e4de, #b9b6ad 70%, #8f8c83); }
+  .lap .deck::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 92px; height: 5.5px; border-radius: 0 0 8px 8px; background: linear-gradient(#c9c6bd, #a9a69d); }
+  @media (prefers-color-scheme: dark) {
+    .lap .deck { background: linear-gradient(#55534c, #2e2d28 70%, #1b1a17); }
+    .lap .deck::before { background: linear-gradient(#3e3c36, #2a2925); }
+  }
+  .lap.l1 { left: 0; width: 41%; transform: translateY(-50%) translateZ(-130px) rotateY(28deg); z-index: 1; filter: brightness(.82); }
+  .lap.l2 { left: 50%; width: 55%; transform: translateY(-50%) translateX(-50%) translateZ(80px); z-index: 3; }
+  .lap.l3 { right: 0; width: 41%; transform: translateY(-50%) translateZ(-130px) rotateY(-28deg); z-index: 1; filter: brightness(.82); }
+  .lap.l1:hover { transform: translateY(-52%) translateZ(-60px) rotateY(22deg); filter: brightness(1); z-index: 4; }
+  .lap.l2:hover { transform: translateY(-52%) translateX(-50%) translateZ(140px); }
+  .lap.l3:hover { transform: translateY(-52%) translateZ(-60px) rotateY(-22deg); filter: brightness(1); z-index: 4; }
+  .fleet-actions { display: flex; justify-content: center; margin-top: 26px; }
+  @media (max-width: 760px) {
+    .scene { perspective: none; }
+    .fleet { height: auto; transform: none !important; display: grid; gap: 18px; }
+    .lap { position: static; width: 100% !important; transform: none !important; filter: none !important; }
+  }
+
+  /* ---------- APPS RAIL ---------- */
+  .apps-rail {
+    display: grid; grid-auto-flow: column; grid-auto-columns: min(82vw, 740px);
+    gap: 24px; overflow-x: auto; padding: 14px 4px 26px;
+    scroll-snap-type: x mandatory; scrollbar-width: none; margin-top: 48px;
+  }
+  .apps-rail::-webkit-scrollbar { display: none; }
+  .app-card {
+    scroll-snap-align: center; border-radius: 22px; overflow: hidden; position: relative;
+    border: 1px solid var(--line); background: var(--panel); box-shadow: var(--shadow); cursor: zoom-in;
+    transition: transform .5s var(--ease), box-shadow .5s var(--ease); will-change: transform;
+  }
+  .app-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+  .app-card img { display: block; width: 100%; }
+  .app-card .cap {
+    position: absolute; left: 16px; bottom: 16px;
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(10px);
+    border: 1px solid var(--line-2); color: var(--ink);
+    padding: 8px 15px; border-radius: 999px;
+  }
+  .rail-hint { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .rail-hint .ln { width: 40px; height: 1px; background: var(--line-2); }
+  .be-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+  .be-links a {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 12px 22px; border-radius: 999px; border: 1px solid var(--line-2);
+    font-size: 14px; font-weight: 500; color: var(--ink);
+    transition: border-color .3s, color .3s, transform .3s var(--ease);
+  }
+  .be-links a:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
+
+  /* ---------- BRAND ---------- */
+  .bgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 52px; }
+  @media (max-width: 820px) { .bgrid { grid-template-columns: 1fr; } }
+  .bshot {
+    border-radius: 18px; overflow: hidden; border: 1px solid var(--line); cursor: zoom-in;
+    aspect-ratio: 16/11; background: var(--panel); box-shadow: var(--shadow);
+    transition: transform .5s var(--ease), box-shadow .5s var(--ease); will-change: transform;
+  }
+  .bshot.wide { grid-column: span 2; aspect-ratio: auto; }
+  @media (max-width: 820px) { .bshot.wide { grid-column: span 1; aspect-ratio: 16/11; } }
+  .bshot img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+  .bshot:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .bshot:hover img { transform: scale(1.05); }
+  .bsub { margin-top: 84px; display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .bsub h3 { font-family: var(--serif); font-size: clamp(23px, 3vw, 32px); font-weight: 560; letter-spacing: -0.01em; }
+  .bsub h3 em { font-style: italic; color: var(--gold); font-weight: 420; }
+  .bsub p { color: var(--muted); font-size: 14.5px; }
+
+  /* ---------- EXPERIENCE (luxury) ---------- */
+  .xp { margin-top: 64px; border-top: 1px solid var(--line); }
+  .xp-row {
+    display: grid; grid-template-columns: 90px 1.1fr 1.6fr; gap: 18px 40px;
+    padding: 44px 10px; border-bottom: 1px solid var(--line);
+    transition: background .35s;
+  }
+  .xp-row:hover { background: color-mix(in srgb, var(--panel) 70%, transparent); }
+  @media (max-width: 860px) { .xp-row { grid-template-columns: 1fr; gap: 12px; padding: 36px 4px; } }
+  .xp-num { font-family: var(--serif); font-style: italic; font-size: 20px; color: var(--gold); }
+  .xp-role { font-family: var(--serif); font-size: clamp(22px, 2.6vw, 30px); font-weight: 560; letter-spacing: -0.01em; line-height: 1.15; }
+  .xp-place { margin-top: 8px; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+  .xp-loc { margin-top: 6px; font-size: 13px; color: var(--muted); }
+  .xp-body { color: var(--muted); font-size: 15px; }
+  .xp-body ul { list-style: none; display: grid; gap: 10px; margin-top: 4px; }
+  .xp-body li { padding-left: 24px; position: relative; }
+  .xp-body li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+  .xp-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .chip { font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--muted); }
+  .edu { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 44px; }
+  @media (max-width: 860px) { .edu { grid-template-columns: 1fr; } }
+  .edu-card { border: 1px solid var(--line); border-radius: 20px; background: var(--panel); box-shadow: var(--shadow); padding: 30px; }
+  .edu-card h4 { font-family: var(--serif); font-size: 18px; font-weight: 560; margin-bottom: 12px; }
+  .edu-card h4 em { color: var(--gold); font-style: italic; }
+  .edu-card div { color: var(--muted); font-size: 14px; }
+  .edu-card b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- CONTACT ---------- */
+  .contact { text-align: center; }
+  .contact h2 { font-family: var(--serif); font-weight: 560; font-size: clamp(44px, 8vw, 100px); letter-spacing: -0.02em; line-height: 1.02; }
+  .contact h2 em { font-style: italic; color: var(--gold); font-weight: 420; }
+  .contact .sub { margin-top: 20px; color: var(--muted); font-size: clamp(16px, 2vw, 19px); }
+  .cform { margin: 50px auto 0; max-width: 640px; display: grid; gap: 15px; text-align: left; }
+  .crow { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+  @media (max-width: 640px) { .crow { grid-template-columns: 1fr; } }
+  .field input, .field textarea {
+    width: 100%; padding: 16px 18px; border-radius: 14px; border: 1px solid var(--line-2);
+    background: var(--panel); color: var(--ink); font-size: 15px; font-family: var(--sans);
+    transition: border-color .3s, box-shadow .3s;
+  }
+  .field input::placeholder, .field textarea::placeholder { color: var(--muted); opacity: .75; }
+  .field input:focus, .field textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px rgba(195,162,92,0.16); }
+  .field textarea { min-height: 140px; resize: vertical; }
+  .cform .btn-ink { justify-self: center; margin-top: 8px; }
+  .cmeta { margin-top: 42px; display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; color: var(--muted); font-size: 15px; }
+  .cmeta a:hover { color: var(--gold); }
+  .socials { margin-top: 30px; display: flex; gap: 14px; justify-content: center; }
+  .socials a {
+    width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line-2);
+    display: flex; align-items: center; justify-content: center; color: var(--muted);
+    transition: color .3s, border-color .3s, transform .3s var(--ease);
+  }
+  .socials a:hover { color: var(--gold); border-color: var(--gold); transform: translateY(-4px); }
+
+  footer { border-top: 1px solid var(--line); padding: 38px 0; text-align: center; color: var(--muted); font-size: 13px; position: relative; z-index: 1; }
+  footer em { font-style: normal; color: var(--gold); }
+
+  /* ---------- LIGHTBOX ---------- */
+  .lb { position: fixed; inset: 0; z-index: 300; background: rgba(10,9,6,0.93); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; padding: 44px; }
+  .lb.open { display: flex; }
+  .lb img { max-width: 94vw; max-height: 86vh; border-radius: 10px; box-shadow: 0 40px 120px rgba(0,0,0,0.7); }
+  .lb button {
+    position: absolute; color: #fff; background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 18px; transition: background .25s, border-color .25s;
+  }
+  .lb button:hover { background: rgba(195,162,92,0.3); border-color: var(--gold-2); }
+  .lb .lb-close { top: 24px; right: 24px; }
+  .lb .lb-prev { left: 24px; top: 50%; transform: translateY(-50%); }
+  .lb .lb-next { right: 24px; top: 50%; transform: translateY(-50%); }
+  .lb .lb-count { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.65); font-size: 12.5px; letter-spacing: 0.16em; }
+  .lb-hidden { display: none; }
+  @media (max-width: 600px) { .lb { padding: 14px; } .lb .lb-prev { left: 8px; } .lb .lb-next { right: 8px; } }
+
+  /* ---------- REVEAL ---------- */
+  .rv { opacity: 0; transform: translateY(30px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+  .rv.in { opacity: 1; transform: none; }
+  .rv.d1 { transition-delay: .1s; } .rv.d2 { transition-delay: .2s; } .rv.d3 { transition-delay: .3s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rv { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="glow"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">Khaled Sameer<em>.</em></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#ventures">Ventures</a>
+      <a href="#systems">Systems</a>
+      <a href="#apps">Apps</a>
+      <a href="#brand">Brand</a>
+      <a href="#experience">Journey</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow rv">Founder · Designer · Builder</div>
+    <h1 class="rv d1" id="heroTitle">Crafting brands<br/>&amp; the <em>systems</em><br/>behind them.</h1>
+    <p class="sub rv d2">I'm <strong>Khaled Sameer</strong> — founder of <strong>Bright Marketing</strong> and <strong>Cafflow</strong>. I design the identity, build the product, and ship the system. End to end.</p>
+    <div class="hero-cta rv d3">
+      <a href="#systems" class="btn btn-ink" data-magnet>Explore the work
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#contact" class="btn btn-gold" data-magnet>Let's talk</a>
+    </div>
+    <div class="hero-foot rv d3">
+      <span><b>Based</b> — Giza, Egypt</span>
+      <span><b>Scope</b> — Brand · Product · Code</span>
+      <span><b>Working</b> — Worldwide</span>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-eyebrow rv">About</div>
+    <h2 class="sec-title rv d1">Business, design <em>&amp;</em> code.</h2>
+    <p class="sec-lead rv d2">An entrepreneur with 5+ years across design, brand-building and product. I run a full-service marketing agency, I've founded and shipped two real-world POS products — and I still design hands-on, every day.</p>
+    <div class="stats rv d2">
+      <div class="stat"><div class="num" data-count="5" data-suffix="+">0</div><div class="lbl">Years building brands</div></div>
+      <div class="stat"><div class="num" data-count="2" data-suffix="">0</div><div class="lbl">Products built &amp; live</div></div>
+      <div class="stat"><div class="num" data-count="160" data-suffix="+">0</div><div class="lbl">Design projects delivered</div></div>
+      <div class="stat"><div class="num" data-count="3" data-suffix="">0</div><div class="lbl">Sectors across MENA</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VENTURES -->
+<section id="ventures">
+  <div class="wrap">
+    <div class="sec-eyebrow rv">Ventures</div>
+    <h2 class="sec-title rv d1">Two companies, <em>one</em> builder.</h2>
+    <div class="ventures">
+      <article class="vcard rv">
+        <div class="k">Founder — Agency</div>
+        <h3>Bright Marketing</h3>
+        <p>A full-service digital marketing agency. I own media buying, account management and client strategy across every active account, leading a team of four.</p>
+        <ul>
+          <li>Paid campaigns across Meta, TikTok &amp; Google Ads</li>
+          <li>Clients in legal (KSA), real estate &amp; automotive</li>
+          <li>End-to-end delivery: proposals, contracts, ops dashboard</li>
+        </ul>
+        <div class="vtags"><span class="vtag">Media Buying</span><span class="vtag">Strategy</span><span class="vtag">Branding</span><span class="vtag">Team of 4</span></div>
+      </article>
+      <article class="vcard rv d1">
+        <div class="k">Founder — Product</div>
+        <h3>Cafflow</h3>
+        <p>A POS &amp; retail management company. Two flagship products designed, developed and deployed for real-world use — from UX direction to technical architecture.</p>
+        <ul>
+          <li>Café &amp; restaurant POS — live in production</li>
+          <li>Pharmacy management — Arabic RTL, local payments</li>
+          <li>Node.js · Express · MongoDB · React · Electron</li>
+        </ul>
+        <div class="vtags"><span class="vtag">Node.js</span><span class="vtag">React</span><span class="vtag">Electron</span><span class="vtag">Offline-first</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SYSTEMS -->
+<section id="systems">
+  <div class="wrap">
+    <div class="sec-eyebrow rv">Product Showcase</div>
+    <h2 class="sec-title rv d1">Systems — built <em>&amp;</em> live.</h2>
+    <p class="sec-lead rv d2">Two complete point-of-sale products under Cafflow. Move your mouse over each scene — click any screen to view it full size.</p>
+
+    <!-- Café fleet -->
+    <div class="fleet-block rv">
+      <div class="fleet-head">
+        <h3>Café &amp; Restaurant POS</h3>
+        <span class="badge live">● Live in production</span>
+      </div>
+      <p class="fleet-sub">Dashboard, table management and order tracking — a dark, fast interface built for busy service.</p>
+      <div class="stage">
+        <div class="scene" data-scene>
+          <div class="fleet">
+            <figure class="lap l1"><div class="screen"><img class="lbimg" data-group="cafe" src="assets/img/cafe-03.jpg" alt="Café POS — tables" loading="lazy" /></div><div class="deck"></div></figure>
+            <figure class="lap l2"><div class="screen"><img class="lbimg" data-group="cafe" src="assets/img/cafe-01.jpg" alt="Café POS — dashboard" /></div><div class="deck"></div></figure>
+            <figure class="lap l3"><div class="screen"><img class="lbimg" data-group="cafe" src="assets/img/cafe-06.jpg" alt="Café POS — orders" loading="lazy" /></div><div class="deck"></div></figure>
+          </div>
+        </div>
+      </div>
+      <div class="fleet-actions">
+        <button class="btn btn-gold" data-lb-open="cafe" data-magnet>View all 9 screens
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <div class="lb-hidden" aria-hidden="true">
+        <img class="lbimg" data-group="cafe" src="assets/img/cafe-02.jpg" alt="Café POS screen" loading="lazy" />
+        <img class="lbimg" data-group="cafe" src="assets/img/cafe-04.jpg" alt="Café POS screen" loading="lazy" />
+        <img class="lbimg" data-group="cafe" src="assets/img/cafe-05.jpg" alt="Café POS screen" loading="lazy" />
+        <img class="lbimg" data-group="cafe" src="assets/img/cafe-07.jpg" alt="Café POS screen" loading="lazy" />
+        <img class="lbimg" data-group="cafe" src="assets/img/cafe-08.jpg" alt="Café POS screen" loading="lazy" />
+        <img class="lbimg" data-group="cafe" src="assets/img/cafe-09.jpg" alt="Café POS screen" loading="lazy" />
+      </div>
+    </div>
+
+    <!-- Pharmacy fleet -->
+    <div class="fleet-block rv">
+      <div class="fleet-head">
+        <h3>Pharmacy Management</h3>
+        <span class="badge">Arabic RTL · Cafflow</span>
+      </div>
+      <p class="fleet-sub">Inventory with barcodes &amp; expiry, shifts, treasury, prescriptions and delivery — Arabic-first with a local medicines database.</p>
+      <div class="stage">
+        <div class="scene" data-scene>
+          <div class="fleet">
+            <figure class="lap l1"><div class="screen"><img class="lbimg" data-group="pharm" src="assets/img/pharm-01.jpg" alt="Pharmacy — POS" loading="lazy" /></div><div class="deck"></div></figure>
+            <figure class="lap l2"><div class="screen"><img class="lbimg" data-group="pharm" src="assets/img/pharm-06.jpg" alt="Pharmacy — inventory" loading="lazy" /></div><div class="deck"></div></figure>
+            <figure class="lap l3"><div class="screen"><img class="lbimg" data-group="pharm" src="assets/img/pharm-04.jpg" alt="Pharmacy — treasury" loading="lazy" /></div><div class="deck"></div></figure>
+          </div>
+        </div>
+      </div>
+      <div class="fleet-actions">
+        <button class="btn btn-gold" data-lb-open="pharm" data-magnet>View all 7 screens
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <div class="lb-hidden" aria-hidden="true">
+        <img class="lbimg" data-group="pharm" src="assets/img/pharm-02.jpg" alt="Pharmacy screen" loading="lazy" />
+        <img class="lbimg" data-group="pharm" src="assets/img/pharm-03.jpg" alt="Pharmacy screen" loading="lazy" />
+        <img class="lbimg" data-group="pharm" src="assets/img/pharm-05.jpg" alt="Pharmacy screen" loading="lazy" />
+        <img class="lbimg" data-group="pharm" src="assets/img/pharm-07.jpg" alt="Pharmacy screen" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPS -->
+<section id="apps">
+  <div class="wrap">
+    <div class="sec-eyebrow rv">Mobile</div>
+    <h2 class="sec-title rv d1">Apps, designed <em>end to end</em>.</h2>
+    <p class="sec-lead rv d2">Product design case studies from Behance — fintech and marketplace apps.</p>
+    <div class="apps-rail rv d2" id="appsRail">
+      <div class="app-card"><img class="lbimg" data-group="apps" src="assets/img/app-03.jpg" alt="Financial app — screens" loading="lazy" /><span class="cap">Financial App · UI/UX</span></div>
+      <div class="app-card"><img class="lbimg" data-group="apps" src="assets/img/app-02.jpg" alt="Financial app — cover" loading="lazy" /><span class="cap">Financial App · Cover</span></div>
+      <div class="app-card"><img class="lbimg" data-group="apps" src="assets/img/app-08.jpg" alt="Bright app — screens" loading="lazy" /><span class="cap">Bright Marketing App</span></div>
+      <div class="app-card"><img class="lbimg" data-group="apps" src="assets/img/app-07.jpg" alt="Bright app — cover" loading="lazy" /><span class="cap">Bright App · Cover</span></div>
+      <div class="app-card"><img class="lbimg" data-group="apps" src="assets/img/app-04.jpg" alt="Design system" loading="lazy" /><span class="cap">Design System</span></div>
+      <div class="app-card"><img class="lbimg" data-group="apps" src="assets/img/app-01.jpg" alt="Mobile app UX/UI" loading="lazy" /><span class="cap">Mobile App · UX/UI</span></div>
+    </div>
+    <div class="rail-hint rv"><span class="ln"></span>Drag sideways</div>
+    <div class="be-links rv">
+      <a href="https://www.behance.net/gallery/215758627/Financial-Mobile-App-UIUX-Design" target="_blank" rel="noopener">Financial App — case study ↗</a>
+      <a href="https://www.behance.net/gallery/215758103/Bright-Marketing-Mobile-App-UIUX-Design" target="_blank" rel="noopener">Bright App — case study ↗</a>
+      <a href="https://www.behance.net/gallery/170312851/Mobile-App-UXUI-App-Design" target="_blank" rel="noopener">Mobile App UX/UI ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND -->
+<section id="brand">
+  <div class="wrap">
+    <div class="sec-eyebrow rv">Brand &amp; Identity</div>
+    <h2 class="sec-title rv d1">Identities that live <em>everywhere</em>.</h2>
+    <p class="sec-lead rv d2">On screen, in print, and in the street — brand systems designed end to end.</p>
+
+    <div class="bsub rv" style="margin-top:64px">
+      <h3>Bright Marketing <em>— agency identity</em></h3>
+      <p>Logo, grid, cards, billboards &amp; app UI</p>
+    </div>
+    <div class="bgrid rv d1">
+      <div class="bshot wide"><img class="lbimg" data-group="bright" src="assets/img/bright-24.jpg" alt="Bright — night billboard" loading="lazy" /></div>
+      <div class="bshot"><img class="lbimg" data-group="bright" src="assets/img/bright-15.jpg" alt="Bright — business cards" loading="lazy" /></div>
+      <div class="bshot"><img class="lbimg" data-group="bright" src="assets/img/bright-21.jpg" alt="Bright — metro billboard" loading="lazy" /></div>
+      <div class="bshot"><img class="lbimg" data-group="bright" src="assets/img/bright-09.jpg" alt="Bright — app on iPhones" loading="lazy" /></div>
+      <div class="bshot"><img class="lbimg" data-group="bright" src="assets/img/bright-18.jpg" alt="Bright — brand cubes" loading="lazy" /></div>
+      <div class="bshot wide"><img class="lbimg" data-group="bright" src="assets/img/bright-13.jpg" alt="Bright — website on laptop" loading="lazy" /></div>
+      <div class="bshot"><img class="lbimg" data-group="bright" src="assets/img/bright-01.jpg" alt="Bright — logo grid" loading="lazy" /></div>
+    </div>
+
+    <div class="bsub rv">
+      <h3>CAIO <em>— specialty coffee identity</em></h3>
+      <p>Brand system &amp; packaging for a coffee house</p>
+    </div>
+    <div class="bgrid rv d1">
+      <div class="bshot wide"><img class="lbimg" data-group="caio" src="assets/img/caio-02.jpg" alt="CAIO — espresso packaging" loading="lazy" /></div>
+      <div class="bshot"><img class="lbimg" data-group="caio" src="assets/img/caio-01.jpg" alt="CAIO — street board" loading="lazy" /></div>
+      <div class="bshot"><img class="lbimg" data-group="caio" src="assets/img/caio-03.jpg" alt="CAIO — identity" loading="lazy" /></div>
+      <div class="bshot"><img class="lbimg" data-group="caio" src="assets/img/caio-04.jpg" alt="CAIO — identity" loading="lazy" /></div>
+      <div class="bshot"><img class="lbimg" data-group="caio" src="assets/img/caio-05.jpg" alt="CAIO — identity" loading="lazy" /></div>
+      <div class="bshot"><img class="lbimg" data-group="caio" src="assets/img/caio-06.jpg" alt="CAIO — identity" loading="lazy" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-eyebrow rv">Journey</div>
+    <h2 class="sec-title rv d1">Experience, <em>in detail</em>.</h2>
+
+    <div class="xp rv d1">
+      <div class="xp-row">
+        <div class="xp-num">01</div>
+        <div>
+          <div class="xp-role">Founder</div>
+          <div class="xp-place">Bright Marketing</div>
+          <div class="xp-loc">6th of October City, Giza — Digital Marketing Agency</div>
+        </div>
+        <div class="xp-body">
+          <ul>
+            <li>Founded and co-lead a full-service agency — personally owning media buying, account management and client strategy across every active account.</li>
+            <li>Direct a team of four across creative, social and paid media — Meta, TikTok &amp; Google Ads.</li>
+            <li>Manage live engagements in legal services (Saudi Arabia), real estate &amp; tourism, and automotive.</li>
+            <li>Built the agency's delivery system: branded proposals, contracts, strategic plans and an internal ops dashboard.</li>
+            <li>Draft and negotiate contracts directly, with psychology-driven closing strategy for high-value deals.</li>
+            <li>Design AI-assisted workflows that scale output without added headcount.</li>
+          </ul>
+          <div class="xp-chips"><span class="chip">Media Buying</span><span class="chip">Client Strategy</span><span class="chip">Contracts</span><span class="chip">AI Workflows</span></div>
+        </div>
+      </div>
+      <div class="xp-row">
+        <div class="xp-num">02</div>
+        <div>
+          <div class="xp-role">Founder</div>
+          <div class="xp-place">Cafflow</div>
+          <div class="xp-loc">POS &amp; Retail Management Systems</div>
+        </div>
+        <div class="xp-body">
+          <ul>
+            <li>Built two flagship products from the ground up — a café/restaurant POS and a pharmacy management system — both deployed for real-world use.</li>
+            <li>Owned the full lifecycle: UX direction, feature design and technical architecture.</li>
+            <li>Arabic RTL interface, local medicines database and integrated local payment methods.</li>
+          </ul>
+          <div class="xp-chips"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">MongoDB</span><span class="chip">React</span><span class="chip">Electron</span></div>
+        </div>
+      </div>
+      <div class="xp-row">
+        <div class="xp-num">03</div>
+        <div>
+          <div class="xp-role">Graphic &amp; UX/UI Designer</div>
+          <div class="xp-place">Freelance</div>
+          <div class="xp-loc">Independent practice</div>
+        </div>
+        <div class="xp-body">
+          <ul>
+            <li>Full brand identity systems, mobile app UI/UX and marketing collateral — for clients across F&amp;B, fashion, tech and professional services.</li>
+            <li>End-to-end ownership: client communication, design execution and final delivery.</li>
+          </ul>
+          <div class="xp-chips"><span class="chip">Brand Identity</span><span class="chip">UI/UX</span><span class="chip">Figma</span><span class="chip">Adobe CC</span></div>
+        </div>
+      </div>
+      <div class="xp-row">
+        <div class="xp-num">04</div>
+        <div>
+          <div class="xp-role">Graphic Designer</div>
+          <div class="xp-place">UniMedia · BezzX</div>
+          <div class="xp-loc">Full-time · Part-time</div>
+        </div>
+        <div class="xp-body">
+          <ul>
+            <li>Social media designs and mockups across 50+ projects at UniMedia — leading a team of four.</li>
+            <li>Delivered a logo package that measurably improved client brand recognition.</li>
+            <li>Logos, vector graphics and social content at BezzX with Photoshop &amp; Illustrator.</li>
+          </ul>
+          <div class="xp-chips"><span class="chip">50+ Projects</span><span class="chip">Team Lead</span><span class="chip">Photoshop</span><span class="chip">Illustrator</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="edu rv d2">
+      <div class="edu-card"><h4>Education<em>.</em></h4><div><b>Canadian International College</b><br/>Bachelor of Business Technology<br/>2020 – 2024</div></div>
+      <div class="edu-card"><h4>Certifications<em>.</em></h4><div class="xp-chips" style="margin-top:4px"><span class="chip">UX/UI Nanodegree — Udacity</span><span class="chip">Python</span><span class="chip">Linux</span><span class="chip">Adobe Illustrator</span></div></div>
+      <div class="edu-card"><h4>Languages<em>.</em></h4><div><b>Arabic</b> — Native<br/><b>English</b> — Proficient</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2 class="rv">Let's build <em>something</em>.</h2>
+    <p class="sub rv d1">A brand to launch, a product to build, or a campaign to run — tell me about it.</p>
+    <form class="cform rv d2" action="https://formspree.io/f/xpqggryg" method="POST">
+      <div class="crow">
+        <div class="field"><input name="name" type="text" placeholder="Your name" required /></div>
+        <div class="field"><input name="email" type="email" placeholder="you@email.com" required /></div>
+      </div>
+      <div class="field"><textarea name="message" placeholder="Tell me about your project…" required></textarea></div>
+      <button type="submit" class="btn btn-ink" data-magnet>Send message
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
+    <div class="cmeta rv d2">
+      <a href="mailto:contact@khaleds.me">contact@khaleds.me</a>
+      <a href="tel:+201515999694">+20 151 599 9694</a>
+      <span>Giza, Egypt</span>
+    </div>
+    <div class="socials rv d3">
+      <a href="https://linkedin.com/in/1khaledsameer" target="_blank" rel="noopener" title="LinkedIn">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0Z"/></svg>
+      </a>
+      <a href="https://behance.net/khaledsameer" target="_blank" rel="noopener" title="Behance">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8.2 6.5c.9 0 1.7.1 2.4.3.7.2 1.2.4 1.7.8.4.3.8.8 1 1.3.2.5.3 1.2.3 1.9 0 .8-.2 1.5-.6 2-.3.5-.9 1-1.6 1.3 1 .3 1.7.7 2.2 1.4.5.7.7 1.5.7 2.4 0 .8-.1 1.4-.4 2-.3.6-.7 1-1.2 1.4-.5.4-1.1.6-1.8.8-.7.2-1.4.3-2.1.3H1V6.5h7.2Zm-.4 5.5c.6 0 1-.1 1.4-.4.4-.3.5-.7.5-1.3 0-.3-.1-.6-.2-.8-.1-.2-.3-.4-.5-.5-.2-.1-.4-.2-.7-.2-.3 0-.5-.1-.8-.1H4.3v3.3h3.5Zm.2 5.8c.3 0 .6 0 .9-.1.3-.1.5-.2.7-.3.2-.2.3-.4.5-.6.1-.3.2-.6.2-.9 0-.7-.2-1.2-.6-1.5-.4-.3-.9-.5-1.6-.5H4.3v3.9h3.7ZM17.9 17.5c.4.4 1 .6 1.8.6.6 0 1-.1 1.4-.4.4-.3.6-.5.7-.8h2.3c-.4 1.1-.9 1.9-1.7 2.4-.8.5-1.7.7-2.8.7-.8 0-1.5-.1-2.1-.4-.6-.2-1.2-.6-1.6-1-.4-.5-.8-1-1-1.7-.2-.6-.4-1.4-.4-2.1 0-.8.1-1.5.4-2.1.2-.7.6-1.2 1-1.7.5-.5 1-.8 1.6-1.1.6-.3 1.3-.4 2.1-.4.9 0 1.6.2 2.2.5.6.3 1.2.8 1.6 1.3.4.6.7 1.2.9 1.9.1.7.2 1.4.2 2.2h-7.3c0 .8.3 1.5.7 1.9v.2Zm3.1-5.1c-.3-.4-.9-.6-1.5-.6-.5 0-.8.1-1.1.2-.3.2-.5.4-.7.6-.2.2-.3.4-.3.7 0 .2-.1.4-.1.6h4.4c-.1-.8-.4-1.3-.7-1.7v-.6ZM16.4 7.6h5.6v1.4h-5.6V7.6Z"/></svg>
+      </a>
+      <a href="mailto:contact@khaleds.me" title="Email">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> Khaled Sameer<em>.</em> khaleds.me — designed &amp; built by me.</div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="Close">&#10005;</button>
+  <button class="lb-prev" id="lbPrev" aria-label="Previous">&#10094;</button>
+  <img id="lbImg" src="" alt="" />
+  <button class="lb-next" id="lbNext" aria-label="Next">&#10095;</button>
+  <div class="lb-count" id="lbCount"></div>
+</div>
+
+<script>
+  const fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Nav border
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 12);
+  onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Reveal
+  const io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  // Smooth anchors
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', (e) => {
+    const t = document.querySelector(a.getAttribute('href')); if (!t) return;
+    e.preventDefault(); t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+    history.replaceState(null, '', a.getAttribute('href'));
+  }));
+
+  // Counters
+  const cio = new IntersectionObserver((es) => es.forEach(e => {
+    if (!e.isIntersecting) return; cio.unobserve(e.target);
+    const el = e.target, target = +el.dataset.count, suffix = el.dataset.suffix || '', t0 = performance.now(), dur = 1400;
+    (function tick(t) {
+      const p = Math.min(1, (t - t0) / dur), v = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      el.innerHTML = v + (suffix ? '<em>' + suffix + '</em>' : '');
+      if (p < 1) requestAnimationFrame(tick);
+    })(t0);
+  }), { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+  // 3D fleet tilt (mouse responsive)
+  if (fine && !reduced) {
+    document.querySelectorAll('[data-scene]').forEach(scene => {
+      const fleet = scene.querySelector('.fleet');
+      scene.addEventListener('mousemove', (e) => {
+        const r = scene.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        fleet.style.transform = `rotateY(${x * 9}deg) rotateX(${y * -5}deg)`;
+      });
+      scene.addEventListener('mouseleave', () => { fleet.style.transform = 'rotateY(0) rotateX(0)'; });
+    });
+  }
+
+  // Magnetic buttons
+  if (fine && !reduced) {
+    document.querySelectorAll('[data-magnet]').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const r = btn.getBoundingClientRect();
+        btn.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.2}px, ${(e.clientY - r.top - r.height / 2) * 0.3}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+  }
+
+  // Apps rail drag
+  (function () {
+    const rail = document.getElementById('appsRail');
+    let down = false, sx = 0, sl = 0, moved = false;
+    rail.addEventListener('pointerdown', (e) => { down = true; moved = false; sx = e.clientX; sl = rail.scrollLeft; });
+    window.addEventListener('pointermove', (e) => { if (!down) return; const dx = e.clientX - sx; if (Math.abs(dx) > 6) moved = true; rail.scrollLeft = sl - dx; });
+    window.addEventListener('pointerup', () => { down = false; });
+    rail.addEventListener('click', (e) => { if (moved) { e.stopPropagation(); e.preventDefault(); } }, true);
+  })();
+
+  // Lightbox
+  (function () {
+    const lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg'), lbCount = document.getElementById('lbCount');
+    const prevBtn = document.getElementById('lbPrev'), nextBtn = document.getElementById('lbNext');
+    const groups = {};
+    document.querySelectorAll('img.lbimg').forEach(img => {
+      const g = img.dataset.group || 'all'; (groups[g] = groups[g] || []);
+      if (!groups[g].some(x => x.src === img.getAttribute('src'))) groups[g].push({ src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' });
+    });
+    let cur = [], idx = 0;
+    function render() {
+      const it = cur[idx]; if (!it) return;
+      lbImg.src = it.src; lbImg.alt = it.alt;
+      const multi = cur.length > 1;
+      prevBtn.style.display = nextBtn.style.display = multi ? 'flex' : 'none';
+      lbCount.textContent = multi ? (idx + 1) + ' / ' + cur.length : '';
+    }
+    function open(g, src) { cur = groups[g] || []; idx = Math.max(0, cur.findIndex(x => x.src === src)); render(); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
+    function close() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }
+    const step = d => { idx = (idx + d + cur.length) % cur.length; render(); };
+    document.querySelectorAll('img.lbimg').forEach(img => img.addEventListener('click', () => open(img.dataset.group || 'all', img.getAttribute('src'))));
+    document.querySelectorAll('[data-lb-open]').forEach(btn => btn.addEventListener('click', () => { const g = btn.dataset.lbOpen; if (groups[g] && groups[g].length) open(g, groups[g][0].src); }));
+    document.getElementById('lbClose').addEventListener('click', close);
+    prevBtn.addEventListener('click', () => step(-1)); nextBtn.addEventListener('click', () => step(1));
+    lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+    document.addEventListener('keydown', (e) => { if (!lb.classList.contains('open')) return; if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') step(-1); else if (e.key === 'ArrowRight') step(1); });
+  })();
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
