@@ -224,7 +224,10 @@
     transition: transform .5s var(--ease), box-shadow .5s var(--ease); will-change: transform;
   }
   .app-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
-  .app-card img { display: block; width: 100%; }
+  .app-card { aspect-ratio: 2/1; }
+  .app-card img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .app-card img.pos-top { object-position: center top; }
+  .app-card img.pos-bottom { object-position: center bottom; }
   .app-card .cap {
     position: absolute; left: 16px; bottom: 16px;
     font-size: 11.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
@@ -450,24 +453,19 @@
       <div class="stage">
         <div class="scene" data-scene>
           <div class="fleet">
-            <figure class="lap l1"><div class="screen"><img class="lbimg" data-group="cafe" src="assets/img/cafe-03.jpg" alt="Café POS — tables" loading="lazy" /></div><div class="deck"></div></figure>
-            <figure class="lap l2"><div class="screen"><img class="lbimg" data-group="cafe" src="assets/img/cafe-01.jpg" alt="Café POS — dashboard" /></div><div class="deck"></div></figure>
-            <figure class="lap l3"><div class="screen"><img class="lbimg" data-group="cafe" src="assets/img/cafe-06.jpg" alt="Café POS — orders" loading="lazy" /></div><div class="deck"></div></figure>
+            <figure class="lap l1"><div class="screen"><img class="lbimg" data-group="cafe" src="assets/img/cafe-n1.jpg" alt="Café POS — screen 1" loading="lazy" /></div><div class="deck"></div></figure>
+            <figure class="lap l2"><div class="screen"><img class="lbimg" data-group="cafe" src="assets/img/cafe-n2.jpg" alt="Café POS — screen 2" /></div><div class="deck"></div></figure>
+            <figure class="lap l3"><div class="screen"><img class="lbimg" data-group="cafe" src="assets/img/cafe-n3.jpg" alt="Café POS — screen 3" loading="lazy" /></div><div class="deck"></div></figure>
           </div>
         </div>
       </div>
       <div class="fleet-actions">
-        <button class="btn btn-gold" data-lb-open="cafe" data-magnet>View all 9 screens
+        <button class="btn btn-gold" data-lb-open="cafe" data-magnet>View all 4 screens
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
       </div>
       <div class="lb-hidden" aria-hidden="true">
-        <img class="lbimg" data-group="cafe" src="assets/img/cafe-02.jpg" alt="Café POS screen" loading="lazy" />
-        <img class="lbimg" data-group="cafe" src="assets/img/cafe-04.jpg" alt="Café POS screen" loading="lazy" />
-        <img class="lbimg" data-group="cafe" src="assets/img/cafe-05.jpg" alt="Café POS screen" loading="lazy" />
-        <img class="lbimg" data-group="cafe" src="assets/img/cafe-07.jpg" alt="Café POS screen" loading="lazy" />
-        <img class="lbimg" data-group="cafe" src="assets/img/cafe-08.jpg" alt="Café POS screen" loading="lazy" />
-        <img class="lbimg" data-group="cafe" src="assets/img/cafe-09.jpg" alt="Café POS screen" loading="lazy" />
+        <img class="lbimg" data-group="cafe" src="assets/img/cafe-n4.jpg" alt="Café POS — screen 4" loading="lazy" />
       </div>
     </div>
 
@@ -481,22 +479,19 @@
       <div class="stage">
         <div class="scene" data-scene>
           <div class="fleet">
-            <figure class="lap l1"><div class="screen"><img class="lbimg" data-group="pharm" src="assets/img/pharm-01.jpg" alt="Pharmacy — POS" loading="lazy" /></div><div class="deck"></div></figure>
-            <figure class="lap l2"><div class="screen"><img class="lbimg" data-group="pharm" src="assets/img/pharm-06.jpg" alt="Pharmacy — inventory" loading="lazy" /></div><div class="deck"></div></figure>
-            <figure class="lap l3"><div class="screen"><img class="lbimg" data-group="pharm" src="assets/img/pharm-04.jpg" alt="Pharmacy — treasury" loading="lazy" /></div><div class="deck"></div></figure>
+            <figure class="lap l1"><div class="screen"><img class="lbimg" data-group="pharm" src="assets/img/pharm-n1.jpg" alt="Pharmacy — screen 1" loading="lazy" /></div><div class="deck"></div></figure>
+            <figure class="lap l2"><div class="screen"><img class="lbimg" data-group="pharm" src="assets/img/pharm-n2.jpg" alt="Pharmacy — screen 2" loading="lazy" /></div><div class="deck"></div></figure>
+            <figure class="lap l3"><div class="screen"><img class="lbimg" data-group="pharm" src="assets/img/pharm-n3.jpg" alt="Pharmacy — screen 3" loading="lazy" /></div><div class="deck"></div></figure>
           </div>
         </div>
       </div>
       <div class="fleet-actions">
-        <button class="btn btn-gold" data-lb-open="pharm" data-magnet>View all 7 screens
+        <button class="btn btn-gold" data-lb-open="pharm" data-magnet>View all 4 screens
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
       </div>
       <div class="lb-hidden" aria-hidden="true">
-        <img class="lbimg" data-group="pharm" src="assets/img/pharm-02.jpg" alt="Pharmacy screen" loading="lazy" />
-        <img class="lbimg" data-group="pharm" src="assets/img/pharm-03.jpg" alt="Pharmacy screen" loading="lazy" />
-        <img class="lbimg" data-group="pharm" src="assets/img/pharm-05.jpg" alt="Pharmacy screen" loading="lazy" />
-        <img class="lbimg" data-group="pharm" src="assets/img/pharm-07.jpg" alt="Pharmacy screen" loading="lazy" />
+        <img class="lbimg" data-group="pharm" src="assets/img/pharm-n4.jpg" alt="Pharmacy — screen 4" loading="lazy" />
       </div>
     </div>
   </div>
@@ -509,12 +504,12 @@
     <h2 class="sec-title rv d1">Apps, designed <em>end to end</em>.</h2>
     <p class="sec-lead rv d2">Product design case studies from Behance — fintech and marketplace apps.</p>
     <div class="apps-rail rv d2" id="appsRail">
-      <div class="app-card"><img class="lbimg" data-group="apps" src="assets/img/app-03.jpg" alt="Financial app — screens" loading="lazy" /><span class="cap">Financial App · UI/UX</span></div>
-      <div class="app-card"><img class="lbimg" data-group="apps" src="assets/img/app-02.jpg" alt="Financial app — cover" loading="lazy" /><span class="cap">Financial App · Cover</span></div>
-      <div class="app-card"><img class="lbimg" data-group="apps" src="assets/img/app-08.jpg" alt="Bright app — screens" loading="lazy" /><span class="cap">Bright Marketing App</span></div>
+      <div class="app-card"><img class="lbimg pos-top" data-group="apps" src="assets/img/app-02.jpg" alt="Financial app — cover" loading="lazy" /><span class="cap">Financial App · Cover</span></div>
+      <div class="app-card"><img class="lbimg pos-top" data-group="apps" src="assets/img/app-03.jpg" alt="Financial app — screens" loading="lazy" /><span class="cap">Financial App · Screens</span></div>
+      <div class="app-card"><img class="lbimg pos-bottom" data-group="apps" src="assets/img/app-03.jpg" alt="Financial app — more screens" loading="lazy" /><span class="cap">Financial App · Flow</span></div>
+      <div class="app-card"><img class="lbimg" data-group="apps" src="assets/img/app-04.jpg" alt="Financial app — design system" loading="lazy" /><span class="cap">Financial App · Design System</span></div>
       <div class="app-card"><img class="lbimg" data-group="apps" src="assets/img/app-07.jpg" alt="Bright app — cover" loading="lazy" /><span class="cap">Bright App · Cover</span></div>
-      <div class="app-card"><img class="lbimg" data-group="apps" src="assets/img/app-04.jpg" alt="Design system" loading="lazy" /><span class="cap">Design System</span></div>
-      <div class="app-card"><img class="lbimg" data-group="apps" src="assets/img/app-01.jpg" alt="Mobile app UX/UI" loading="lazy" /><span class="cap">Mobile App · UX/UI</span></div>
+      <div class="app-card"><img class="lbimg" data-group="apps" src="assets/img/app-08.jpg" alt="Bright app — screens" loading="lazy" /><span class="cap">Bright App · Screens</span></div>
     </div>
     <div class="rail-hint rv"><span class="ln"></span>Drag sideways</div>
     <div class="be-links rv">
@@ -533,6 +528,19 @@
     <p class="sec-lead rv d2">On screen, in print, and in the street — brand systems designed end to end.</p>
 
     <div class="bsub rv" style="margin-top:64px">
+      <h3>Jewelies <em>— jewelry identity</em></h3>
+      <p>Brand system &amp; social presence for a jewelry house</p>
+    </div>
+    <div class="bgrid rv d1">
+      <div class="bshot wide"><img class="lbimg" data-group="jewelies" src="assets/img/jewel-01.jpg" alt="Jewelies — Instagram mockup" loading="lazy" /></div>
+      <div class="bshot"><img class="lbimg" data-group="jewelies" src="assets/img/jewel-02.jpg" alt="Jewelies — brand board" loading="lazy" /></div>
+      <div class="bshot"><img class="lbimg" data-group="jewelies" src="assets/img/jewel-03.jpg" alt="Jewelies — brand board" loading="lazy" /></div>
+      <div class="bshot"><img class="lbimg" data-group="jewelies" src="assets/img/jewel-04.jpg" alt="Jewelies — brand board" loading="lazy" /></div>
+      <div class="bshot"><img class="lbimg" data-group="jewelies" src="assets/img/jewel-05.jpg" alt="Jewelies — brand board" loading="lazy" /></div>
+      <div class="bshot"><img class="lbimg" data-group="jewelies" src="assets/img/jewel-06.jpg" alt="Jewelies — brand board" loading="lazy" /></div>
+    </div>
+
+    <div class="bsub rv">
       <h3>Bright Marketing <em>— agency identity</em></h3>
       <p>Logo, grid, cards, billboards &amp; app UI</p>
     </div>
@@ -622,16 +630,30 @@
         <div class="xp-num">04</div>
         <div>
           <div class="xp-role">Graphic Designer</div>
-          <div class="xp-place">UniMedia · BezzX</div>
-          <div class="xp-loc">Full-time · Part-time</div>
+          <div class="xp-place">BezzX</div>
+          <div class="xp-loc">Part-time</div>
         </div>
         <div class="xp-body">
           <ul>
-            <li>Social media designs and mockups across 50+ projects at UniMedia — leading a team of four.</li>
-            <li>Delivered a logo package that measurably improved client brand recognition.</li>
-            <li>Logos, vector graphics and social content at BezzX with Photoshop &amp; Illustrator.</li>
+            <li>Designed logos, vector graphics and social media content as part of a design team.</li>
+            <li>Daily production across Adobe Photoshop &amp; Illustrator.</li>
           </ul>
-          <div class="xp-chips"><span class="chip">50+ Projects</span><span class="chip">Team Lead</span><span class="chip">Photoshop</span><span class="chip">Illustrator</span></div>
+          <div class="xp-chips"><span class="chip">Logos</span><span class="chip">Vector Art</span><span class="chip">Photoshop</span><span class="chip">Illustrator</span></div>
+        </div>
+      </div>
+      <div class="xp-row">
+        <div class="xp-num">05</div>
+        <div>
+          <div class="xp-role">Graphic Designer</div>
+          <div class="xp-place">UniMedia</div>
+          <div class="xp-loc">Full-time</div>
+        </div>
+        <div class="xp-body">
+          <ul>
+            <li>Created social media designs and mockups across 50+ projects — leading a team of four designers.</li>
+            <li>Delivered a logo package that measurably improved client brand recognition.</li>
+          </ul>
+          <div class="xp-chips"><span class="chip">50+ Projects</span><span class="chip">Team Lead</span><span class="chip">Social Design</span><span class="chip">Mockups</span></div>
         </div>
       </div>
     </div>
