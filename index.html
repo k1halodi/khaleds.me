@@ -198,17 +198,28 @@
     .lap .deck { background: linear-gradient(#55534c, #2e2d28 70%, #1b1a17); }
     .lap .deck::before { background: linear-gradient(#3e3c36, #2a2925); }
   }
-  .lap.l1 { left: 0; width: 41%; transform: translateY(-50%) translateZ(-130px) rotateY(28deg); z-index: 1; filter: brightness(.82); }
-  .lap.l2 { left: 50%; width: 55%; transform: translateY(-50%) translateX(-50%) translateZ(80px); z-index: 3; }
-  .lap.l3 { right: 0; width: 41%; transform: translateY(-50%) translateZ(-130px) rotateY(-28deg); z-index: 1; filter: brightness(.82); }
-  .lap.l1:hover { transform: translateY(-52%) translateZ(-60px) rotateY(22deg); filter: brightness(1); z-index: 4; }
-  .lap.l2:hover { transform: translateY(-52%) translateX(-50%) translateZ(140px); }
-  .lap.l3:hover { transform: translateY(-52%) translateZ(-60px) rotateY(-22deg); filter: brightness(1); z-index: 4; }
+  .lap.l1 { left: 0; width: 30%; transform: translateY(-50%) translateZ(-150px) rotateY(28deg); z-index: 1; filter: brightness(.8); }
+  .lap.l2 { left: 50%; width: 62%; transform: translateY(-50%) translateX(-50%) translateZ(95px); z-index: 3; }
+  .lap.l3 { right: 0; width: 30%; transform: translateY(-50%) translateZ(-150px) rotateY(-28deg); z-index: 1; filter: brightness(.8); }
+  .lap.l1:hover { transform: translateY(-52%) translateZ(-70px) rotateY(22deg); filter: brightness(1); z-index: 4; }
+  .lap.l2:hover { transform: translateY(-52%) translateX(-50%) translateZ(150px); }
+  .lap.l3:hover { transform: translateY(-52%) translateZ(-70px) rotateY(-22deg); filter: brightness(1); z-index: 4; }
   .fleet-actions { display: flex; justify-content: center; margin-top: 26px; }
   @media (max-width: 760px) {
+    .stage { padding: 18px 12px; border-radius: 24px; }
     .scene { perspective: none; }
-    .fleet { height: auto; transform: none !important; display: grid; gap: 18px; }
+    .fleet {
+      height: auto; transform: none !important; display: grid; gap: 14px;
+      grid-template-columns: 1fr 1fr; grid-template-areas: 'hero hero' 'left right';
+      align-items: start;
+    }
     .lap { position: static; width: 100% !important; transform: none !important; filter: none !important; }
+    .lap.l1 { grid-area: left; }
+    .lap.l2 { grid-area: hero; }
+    .lap.l3 { grid-area: right; }
+    .lap .screen { padding: 8px 8px 10px; }
+    .lap .deck { height: 10px; }
+    .fleet-actions { margin-top: 18px; }
   }
 
   /* ---------- APPS RAIL ---------- */
@@ -245,6 +256,15 @@
     transition: border-color .3s, color .3s, transform .3s var(--ease);
   }
   .be-links a:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
+  @media (max-width: 760px) {
+    .apps-rail {
+      grid-auto-flow: row; grid-auto-columns: unset; grid-template-columns: 1fr;
+      overflow: visible; padding: 14px 0 0; gap: 16px; scroll-snap-type: none;
+    }
+    .app-card { aspect-ratio: 16 / 10; }
+    .rail-hint { display: none; }
+    .be-links { margin-top: 22px; }
+  }
 
   /* ---------- BRAND ---------- */
   .bgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 52px; }
@@ -464,8 +484,8 @@
       <div class="stage">
         <div class="scene" data-scene>
           <div class="fleet">
-            <figure class="lap l1"><div class="screen"><img class="lbimg" data-group="cafe" src="assets/img/cafe-n1.jpg" alt="Café POS — screen 1" loading="lazy" /></div><div class="deck"></div></figure>
-            <figure class="lap l2"><div class="screen"><img class="lbimg" data-group="cafe" src="assets/img/cafe-n2.jpg" alt="Café POS — screen 2" /></div><div class="deck"></div></figure>
+            <figure class="lap l1"><div class="screen"><img class="lbimg" data-group="cafe" src="assets/img/cafe-n2.jpg" alt="Café POS — screen 2" loading="lazy" /></div><div class="deck"></div></figure>
+            <figure class="lap l2"><div class="screen"><img class="lbimg" data-group="cafe" src="assets/img/cafe-n1.jpg" alt="Café POS — screen 1" loading="eager" /></div><div class="deck"></div></figure>
             <figure class="lap l3"><div class="screen"><img class="lbimg" data-group="cafe" src="assets/img/cafe-n3.jpg" alt="Café POS — screen 3" loading="lazy" /></div><div class="deck"></div></figure>
           </div>
         </div>
@@ -490,8 +510,8 @@
       <div class="stage">
         <div class="scene" data-scene>
           <div class="fleet">
-            <figure class="lap l1"><div class="screen"><img class="lbimg" data-group="pharm" src="assets/img/pharm-n1.jpg" alt="Pharmacy — screen 1" loading="lazy" /></div><div class="deck"></div></figure>
-            <figure class="lap l2"><div class="screen"><img class="lbimg" data-group="pharm" src="assets/img/pharm-n2.jpg" alt="Pharmacy — screen 2" loading="lazy" /></div><div class="deck"></div></figure>
+            <figure class="lap l1"><div class="screen"><img class="lbimg" data-group="pharm" src="assets/img/pharm-n2.jpg" alt="Pharmacy — screen 2" loading="lazy" /></div><div class="deck"></div></figure>
+            <figure class="lap l2"><div class="screen"><img class="lbimg" data-group="pharm" src="assets/img/pharm-n1.jpg" alt="Pharmacy — screen 1" loading="eager" /></div><div class="deck"></div></figure>
             <figure class="lap l3"><div class="screen"><img class="lbimg" data-group="pharm" src="assets/img/pharm-n3.jpg" alt="Pharmacy — screen 3" loading="lazy" /></div><div class="deck"></div></figure>
           </div>
         </div>
@@ -515,7 +535,7 @@
     <h2 class="sec-title rv d1">Apps, designed <em>end to end</em>.</h2>
     <p class="sec-lead rv d2">Product design case studies from Behance — fintech and marketplace apps.</p>
     <div class="apps-rail rv d2" id="appsRail">
-      <div class="app-card"><img class="lbimg" data-group="fin" src="assets/img/app-fin1.jpg" alt="Financial app — home &amp; product" loading="lazy" /><span class="cap">Financial App · Screens</span></div>
+      <div class="app-card"><img class="lbimg" data-group="fin" src="assets/img/app-fin1.jpg" alt="Financial app — home &amp; product" loading="eager" /><span class="cap">Financial App · Screens</span></div>
       <div class="app-card"><img class="lbimg" data-group="fin" src="assets/img/app-fin2.jpg" alt="Financial app — insights &amp; transfer" loading="lazy" /><span class="cap">Financial App · Overview</span></div>
       <div class="app-card"><img class="lbimg" data-group="bri" src="assets/img/app-bri1.jpg" alt="Bright app — onboarding &amp; register" loading="lazy" /><span class="cap">Bright App · Screens</span></div>
       <div class="app-card"><img class="lbimg" data-group="bri" src="assets/img/app-bri2.jpg" alt="Bright app — plan &amp; verification" loading="lazy" /><span class="cap">Bright App · Onboarding</span></div>
